@@ -3,6 +3,7 @@
 
 <button id="test" style="cursor:pointer;background-color: black;color: white;">Test</button>
 
+<h4>Token: <span id="token"></span></h4>
 
 <script>
 
@@ -14,7 +15,12 @@
       console.log(token);
 
       if (token && (token.token || token.card)) {
-        alert("token retrieved");
+        if (token.token) {
+          $("#token").html(token.token.id);
+        }
+        if (token.card) {
+          $("#token").html(token.card.id);
+        }
       }
     }
   });
