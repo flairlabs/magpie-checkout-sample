@@ -1,0 +1,43 @@
+<h1>Sample HTML Page</h1>
+<button id="pay" style="cursor:pointer;background-color: black;color: white;">PAY</button>
+
+<button id="test" style="cursor:pointer;background-color: black;color: white;">Test</button>
+
+
+<script>
+
+  Magpie.configure({
+    key: "pk_test_aBTnnTX5QaO2AblZ5wNq2A",
+    name: "Rhiza",
+    token: function(token) {
+      console.log("Token Configureeee");
+      console.log(token);
+
+      if (token && (token.token || token.card)) {
+        alert("token retrieved");
+      }
+    }
+  });
+
+  $("#pay").on("click",function(e) {
+    e.preventDefault();
+    Magpie.open({
+      name: "Joe Kwan",
+      description: "Sample Description",
+      amount: "125.00",
+      currency: 'PHP'
+    });
+  });
+
+  $("#test").on("click",function(e) {
+    e.preventDefault();
+    $.post("http://localhost:1337/v1/sessions", {})
+    .done(function( data ) {
+      console.log(data);
+      console.log("testtt");
+    });
+  });
+
+
+
+</script>
